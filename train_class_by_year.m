@@ -1,4 +1,4 @@
-function train_after_proc=train_data(old_data);
+function train_after_proc=train_class_by_year(old_data);
 
 train_befor_proc=importdata(old_data);
 [row,col]=size(train_befor_proc.textdata)
@@ -196,28 +196,28 @@ end;
 %   save peocessed_Data 'train_after_proc';
 
     row_index=train_after_proc(:,1)==2015;
-    test_2015=test_after_proc(row_index,:);
+    test_2015=test_after_proc(row_index,2:9);
     row_index=train_after_proc(:,1)==2014;
-    test_2014=test_after_proc(row_index,:);
+    test_2014=test_after_proc(row_index,2:9);
     row_index=train_after_proc(:,1)==2013;
-    test_2013=test_after_proc(row_index,:);
+    test_2013=test_after_proc(row_index,2:9);
     row_index=train_after_proc(:,1)==2012;
-    test_2012=test_after_proc(row_index,:);
+    test_2012=test_after_proc(row_index,2:9);
     row_index=train_after_proc(:,1)==2011;
-    test_2011=test_after_proc(row_index,:);
+    test_2011=test_after_proc(row_index,2:9);
     row_index=train_after_proc(:,1)==2010;
-    test_2010=test_after_proc(row_index,:);
+    test_2010=test_after_proc(row_index,2:9);
     row_index=train_after_proc(:,1)==2009;
-    test_2009=test_after_proc(row_index,:);
+    test_2009=test_after_proc(row_index,2:9);
     row_index=train_after_proc(:,1)==2008;
-    test_2008=test_after_proc(row_index,:);
+    test_2008=test_after_proc(row_index,2:9);
     row_index=train_after_proc(:,1)==2007;
-    test_2007=test_after_proc(row_index,:);
+    test_2007=test_after_proc(row_index,2:9);
     row_index=train_after_proc(:,1)==2006;
-    test_2006=test_after_proc(row_index,:);
+    test_2006=test_after_proc(row_index,2:9);
     row_index=train_after_proc(:,1)==2005;
-    test_2005=test_after_proc(row_index,:);
+    test_2005=test_after_proc(row_index,2:9);
     row_index=train_after_proc(:,1)==2004;
-    test_2004=test_after_proc(row_index,:);
+    test_2004=test_after_proc(row_index,2:9);
     row_index=train_after_proc(:,1)==2003;
-    test_2003=test_after_proc(row_index,:);
+    test_2003=test_after_proc(row_index,2:9);

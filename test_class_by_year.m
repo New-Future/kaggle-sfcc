@@ -1,4 +1,4 @@
-function test_after_proc=test_data(old_data);
+function test_after_proc=test_class_by_year(old_data);
 
 test_befor_proc=importdata(old_data);
 [row,col]=size(test_befor_proc.textdata)
@@ -116,31 +116,31 @@ for i=1:row-1
 end;
 %   save peocessed_Data 'test_after_proc';
     row_index=test_after_proc(:,2)==2015;
-    test_2015=test_after_proc(row_index,:);
+    test_2015=[test_after_proc(row_index,1) test_after_proc(row_index,3:9);]
     row_index=test_after_proc(:,2)==2014;
-    test_2014=test_after_proc(row_index,:);
+    test_2014=[test_after_proc(row_index,1) test_after_proc(row_index,3:9);];
     row_index=test_after_proc(:,2)==2013;
-    test_2013=test_after_proc(row_index,:);
+    test_2013=[test_after_proc(row_index,1) test_after_proc(row_index,3:9);];
     row_index=test_after_proc(:,2)==2012;
-    test_2012=test_after_proc(row_index,:);
+    test_2012=[test_after_proc(row_index,1) test_after_proc(row_index,3:9);];
     row_index=test_after_proc(:,2)==2011;
-    test_2011=test_after_proc(row_index,:);
+    test_2011=[test_after_proc(row_index,1) test_after_proc(row_index,3:9);];
     row_index=test_after_proc(:,2)==2010;
-    test_2010=test_after_proc(row_index,:);
+    test_2010=[test_after_proc(row_index,1) test_after_proc(row_index,3:9);];
     row_index=test_after_proc(:,2)==2009;
-    test_2009=test_after_proc(row_index,:);
+    test_2009=[test_after_proc(row_index,1) test_after_proc(row_index,3:9);];
     row_index=test_after_proc(:,2)==2008;
-    test_2008=test_after_proc(row_index,:);
+    test_2008=[test_after_proc(row_index,1) test_after_proc(row_index,3:9);];
     row_index=test_after_proc(:,2)==2007;
-    test_2007=test_after_proc(row_index,:);
+    test_2007=[test_after_proc(row_index,1) test_after_proc(row_index,3:9);];
     row_index=test_after_proc(:,2)==2006;
-    test_2006=test_after_proc(row_index,:);
+    test_2006=[test_after_proc(row_index,1) test_after_proc(row_index,3:9);];
     row_index=test_after_proc(:,2)==2005;
-    test_2005=test_after_proc(row_index,:);
+    test_2005=[test_after_proc(row_index,1) test_after_proc(row_index,3:9);];
     row_index=test_after_proc(:,2)==2004;
-    test_2004=test_after_proc(row_index,:);
+    test_2004=[test_after_proc(row_index,1) test_after_proc(row_index,3:9);];
     row_index=test_after_proc(:,2)==2003;
-    test_2003=test_after_proc(row_index,:);
+    test_2003=[test_after_proc(row_index,1) test_after_proc(row_index,3:9);];
     
     
 
