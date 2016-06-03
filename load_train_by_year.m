@@ -1,4 +1,8 @@
-function trian_data=load_train_by_year(train_file)
+function train_data=load_train_by_year(train_file)
+
+CATEGORY ={'ARSON';'ASSAULT';'BAD CHECKS';'BRIBERY';'BURGLARY';'DISORDERLY CONDUCT';'DRIVING UNDER THE INFLUENCE';'DRUG/NARCOTIC';'DRUNKENNESS';'EMBEZZLEMENT';'EXTORTION';'FAMILY OFFENSES';'FORGERY/COUNTERFEITING';'FRAUD';'GAMBLING';'KIDNAPPING';'LARCENY/THEFT';
+'LIQUOR LAWS';'LOITERING';'MISSING PERSON';'NON-CRIMINAL';'OTHER OFFENSES';'PORNOGRAPHY/OBSCENE MAT';'PROSTITUTION';'RECOVERED VEHICLE';'ROBBERY';'RUNAWAY';'SECONDARY CODES';'SEX OFFENSES FORCIBLE';'SEX OFFENSES NON FORCIBLE';'STOLEN PROPERTY';'SUICIDE';'SUSPICIOUS OCC';'TREA';'TRESPASS';'VANDALISM';'VEHICLE THEFT';'WARRANTS';'WEAPON LAWS';};
+
 train_befor_proc=importdata(train_file);
 [row,col]=size(train_befor_proc.textdata);
 % 创建一个row*9的矩阵，初始化该矩阵全为0
@@ -111,92 +115,16 @@ for i=1:row-1
     train_after_proc(i,7)=X;
     train_after_proc(i,8)=Y;
     %%%%%%统计犯罪类别%%%%%%%%%%%%
-    switch category
-        case 'TREA'
-            train_after_proc(i,9)=1;
-        case 'PORNOGRAPHY/OBSCENE MAT'
-            train_after_proc(i,9)=2;
-        case 'GAMBLING'
-            train_after_proc(i,9)=3;
-        case 'SEX OFFENSES NON FORCIBLE'
-            train_after_proc(i,9)=4;
-        case 'EXTORTION'
-            train_after_proc(i,9)=5;
-        case 'BRIBERY'
-            train_after_proc(i,9)=6;
-        case 'BAD CHECKS'
-            train_after_proc(i,9)=7;
-        case 'FAMILY OFFENSES'
-            train_after_proc(i,9)=8;
-        case 'SUICIDE'
-            train_after_proc(i,9)=9;
-        case 'EMBEZZLEMENT'
-            train_after_proc(i,9)=10;
-        case 'LOITERING'
-            train_after_proc(i,9)=11;
-        case 'ARSON'
-            train_after_proc(i,9)=12;
-        case 'LIQUOR LAWS'
-            train_after_proc(i,9)=13;
-        case 'RUNAWAY'
-            train_after_proc(i,9)=14;
-        case 'DRIVING UNDER THE INFLUENCE'
-            train_after_proc(i,9)=15;
-        case 'KIDNAPPING'
-            train_after_proc(i,9)=16;
-        case 'RECOVERED VEHICLE'
-            train_after_proc(i,9)=17;
-        case 'DRUNKENNESS'
-            train_after_proc(i,9)=18;
-        case 'DISORDERLY CONDUCT'
-            train_after_proc(i,9)=19;
-        case 'SEX OFFENSES FORCIBLE'
-            train_after_proc(i,9)=20;
-        case 'STOLEN PROPERTY'
-            train_after_proc(i,9)=21;
-        case 'TRESPASS'
-            train_after_proc(i,9)=22;
-        case 'PROSTITUTION'
-            train_after_proc(i,9)=23;
-        case 'WEAPON LAWS'
-            train_after_proc(i,9)=24;
-        case 'SECONDARY CODES'
-            train_after_proc(i,9)=25;
-        case 'FORGERY/COUNTERFEITING'
-            train_after_proc(i,9)=26;
-        case 'FRAUD'
-            train_after_proc(i,9)=27;
-        case 'ROBBERY'
-            train_after_proc(i,9)=28;
-        case 'MISSING PERSON'
-            train_after_proc(i,9)=29;
-        case 'SUSPICIOUS OCC'
-            train_after_proc(i,9)=30;
-        case 'BURGLARY'
-            train_after_proc(i,9)=31;
-        case 'WARRANTS'
-            train_after_proc(i,9)=32;
-        case 'VANDALISM'
-            train_after_proc(i,9)=33;
-        case 'VEHICLE THEFT'
-            train_after_proc(i,9)=34;
-        case 'DRUG/NARCOTIC'
-            train_after_proc(i,9)=35;
-        case 'ASSAULT'
-            train_after_proc(i,9)=36;
-        case 'NON-CRIMINAL'
-            train_after_proc(i,9)=37;
-        case 'OTHER OFFENSES'
-            train_after_proc(i,9)=38;
-        case 'LARCENY/THEFT'
-            train_after_proc(i,9)=39;
-    end;
+    c=find(strcmp(CATEGORY,category));
+    train_after_proc(i,9)=c;
+%     train_after_proc(i,10)=category;
 end;
-
-save trianData 'train_after_proc';
-trian_data=cell(13,1);
+save train_Data 'train_after_proc';
+train_after_proc=train_after_proc(find(train_after_proc(:,9)>0),:);
+train_data=cell(13,1);
 for i =1:13
-    index=find(train_after_proc(:,1)==(1+2002));
-    trian_data{i}=train_after_proc(index,2:9);
+    index=find(train_after_proc(:,1)==(i+2002));
+    train_data{i}=train_after_proc(index,2:9);
 end
-save trian_data_by_year  'trian_data';
+save train_data_by_year  'train_data';
+end

@@ -1,4 +1,8 @@
 % Factor = fitensemble(train_data, train_label, 'Subspace', 50, 'KNN');
-Factor = ClassificationKNN.fit(train_after_proc(:,1:8), train_after_proc(:,9), 'NumNeighbors', 10);
-% predict_label = predict(Factor, test_data);
-[predict_label, Scores] = predict(Factor, train_after_proc(:,1:8));
+init;
+
+[trainSet,testSet]= buildTrainSet(train_data{2});
+
+Factor = ClassificationKNN.fit(trainSet(:,1:7), trainSet(:,8), 'NumNeighbors', 10);
+[label,score] = predict(Factor, testSet(:,1:7));
+% loss=logloss(label,score,testSet(:,8))
