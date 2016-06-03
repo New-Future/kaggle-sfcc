@@ -193,6 +193,6 @@ for i=1:row-1
             train_after_proc(i,9)=39;
     end;
 end;
-  save peocessed_Data 'train_after_proc';
+  save trainData 'train_after_proc';
 
 

@@ -1,7 +1,7 @@
-function test_after_proc=test_data(old_data);
+function test_after_proc=loadtest(test_file);
 
-test_befor_proc=importdata(old_data);
-[row,col]=size(test_befor_proc.textdata)
+test_befor_proc=importdata(test_file);
+[row,col]=size(test_befor_proc.textdata);
 % 创建一个row*9的矩阵，初始化该矩阵全为0
 %该矩阵的每一维分别是：
 %year,month,date,hour,days of week,PdDistrict,X,Y,category
@@ -114,6 +114,6 @@ for i=1:row-1
     test_after_proc(i,9)=Y;
    
 end;
-%   save peocessed_Data 'test_after_proc';
+save testData 'test_after_proc';
 
 

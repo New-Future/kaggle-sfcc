@@ -1,22 +1,19 @@
-function train_after_proc=train_year(old_data);
-
-train_befor_proc=importdata(old_data);
-[row,col]=size(train_befor_proc.textdata)
+function trian_data=load_train_by_year(train_file)
+train_befor_proc=importdata(train_file);
+[row,col]=size(train_befor_proc.textdata);
 % 创建一个row*9的矩阵，初始化该矩阵全为0
 %该矩阵的每一维分别是：
 %year,month,date,hour,days of week,PdDistrict,X,Y,category
 train_after_proc=zeros(row-1,9);
-% a=zeros(1,9);
-train_year={[],[],[],[],[],[],[],[],[],[],[],[],[]};
-% train_year={a,a,a,a,a,a,a,a,a,a,a,a,a};
+
 %循环处理
 for i=1:row-1
     Dates = train_befor_proc.textdata{i+1,1};
     DayOfWeek = train_befor_proc.textdata{i+1,4};
     PdDistrict = train_befor_proc.textdata{i+1,5};
     Address = train_befor_proc.textdata{i+1,7};
-    X = train_befor_proc.data(i,1)+122;
-    Y = train_befor_proc.data(i,2)-37;
+    X = train_befor_proc.data(i,1);%+122;
+    Y = train_befor_proc.data(i,2);%-37;
     category = train_befor_proc.textdata{i+1,2};
     %%%%%%%%%%%%%%%%%%%%%%%%处理年月日以及小时%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     train_after_proc(i,1) = str2double(Dates(1,1:4));
@@ -37,7 +34,7 @@ for i=1:row-1
                 train_after_proc(i,4) = str2double(Dates(1,11:12));
             end
         end
-    else 
+    else
         train_after_proc(i,2) = str2double(Dates(1,6:7));
         if Dates(1,10)==' '
             train_after_proc(i,3) = str2double(Dates(1,9));
@@ -88,7 +85,7 @@ for i=1:row-1
     %9:MISSION
     %10:SOUTHERN
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    switch PdDistrict 
+    switch PdDistrict
         case 'RICHMOND'
             train_after_proc(i,6)=1;
         case 'PARK'
@@ -107,7 +104,7 @@ for i=1:row-1
             train_after_proc(i,6)=8;
         case 'MISSION'
             train_after_proc(i,6)=9;
-        case 'SOUTHERN'           
+        case 'SOUTHERN'
             train_after_proc(i,6)=10;
     end;
     %%%%%统计经纬度%%%%%%%%%%%%%%%
@@ -194,8 +191,12 @@ for i=1:row-1
         case 'LARCENY/THEFT'
             train_after_proc(i,9)=39;
     end;
-    train_year{train_after_proc(i,1)-2002}={train_year{train_after_proc(i,1)-2002};train_after_proc(i,:)}
 end;
-%   save peocessed_Data 'train_after_proc';
 
-
+save trianData 'train_after_proc';
+trian_data=cell(13,1);
+for i =1:13
+    index=find(train_after_proc(:,1)==(1+2002));
+    trian_data{i}=train_after_proc(index,2:9);
+end
+save trian_data_by_year  'trian_data';

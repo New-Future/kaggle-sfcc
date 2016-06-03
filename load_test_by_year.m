@@ -1,7 +1,6 @@
-function test_after_proc=test_class_by_year(old_data);
-
-test_befor_proc=importdata(old_data);
-[row,col]=size(test_befor_proc.textdata)
+function test_after_proc=load_test_by_year(test_file)
+test_befor_proc=importdata(test_file);
+[row,col]=size(test_befor_proc.textdata);
 % 创建一个row*9的矩阵，初始化该矩阵全为0
 %该矩阵的每一维分别是：
 %year,month,date,hour,days of week,PdDistrict,X,Y,category
@@ -114,33 +113,10 @@ for i=1:row-1
     test_after_proc(i,9)=Y;
    
 end;
-%   save peocessed_Data 'test_after_proc';
-    row_index=test_after_proc(:,2)==2015;
-    test_2015=[test_after_proc(row_index,1) test_after_proc(row_index,3:9);]
-    row_index=test_after_proc(:,2)==2014;
-    test_2014=[test_after_proc(row_index,1) test_after_proc(row_index,3:9);];
-    row_index=test_after_proc(:,2)==2013;
-    test_2013=[test_after_proc(row_index,1) test_after_proc(row_index,3:9);];
-    row_index=test_after_proc(:,2)==2012;
-    test_2012=[test_after_proc(row_index,1) test_after_proc(row_index,3:9);];
-    row_index=test_after_proc(:,2)==2011;
-    test_2011=[test_after_proc(row_index,1) test_after_proc(row_index,3:9);];
-    row_index=test_after_proc(:,2)==2010;
-    test_2010=[test_after_proc(row_index,1) test_after_proc(row_index,3:9);];
-    row_index=test_after_proc(:,2)==2009;
-    test_2009=[test_after_proc(row_index,1) test_after_proc(row_index,3:9);];
-    row_index=test_after_proc(:,2)==2008;
-    test_2008=[test_after_proc(row_index,1) test_after_proc(row_index,3:9);];
-    row_index=test_after_proc(:,2)==2007;
-    test_2007=[test_after_proc(row_index,1) test_after_proc(row_index,3:9);];
-    row_index=test_after_proc(:,2)==2006;
-    test_2006=[test_after_proc(row_index,1) test_after_proc(row_index,3:9);];
-    row_index=test_after_proc(:,2)==2005;
-    test_2005=[test_after_proc(row_index,1) test_after_proc(row_index,3:9);];
-    row_index=test_after_proc(:,2)==2004;
-    test_2004=[test_after_proc(row_index,1) test_after_proc(row_index,3:9);];
-    row_index=test_after_proc(:,2)==2003;
-    test_2003=[test_after_proc(row_index,1) test_after_proc(row_index,3:9);];
-    
-    
-
+save testData 'test_after_proc';
+test_data=cell(13,1);
+for i =1:13
+    index=find(train_after_proc(:,2)==(1+2002));
+    test_data{i}=train_after_proc(index,[3:9,1]);
+end
+save test_data_by_year 'test_data';
