@@ -16,8 +16,8 @@ for i=1:row-1
     DayOfWeek = train_befor_proc.textdata{i+1,4};
     PdDistrict = train_befor_proc.textdata{i+1,5};
     Address = train_befor_proc.textdata{i+1,7};
-    X = train_befor_proc.data(i,1);%+122;
-    Y = train_befor_proc.data(i,2);%-37;
+    X = train_befor_proc.data(i,1)+122;
+    Y = train_befor_proc.data(i,2)-37;
     category = train_befor_proc.textdata{i+1,2};
     %%%%%%%%%%%%%%%%%%%%%%%%处理年月日以及小时%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     train_after_proc(i,1) = str2double(Dates(1,1:4));
