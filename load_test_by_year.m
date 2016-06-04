@@ -35,7 +35,7 @@ for i=1:row-1
                 test_after_proc(i,5) = str2double(Dates(1,11:12));
             end
         end
-    else 
+    else
         test_after_proc(i,3) = str2double(Dates(1,6:7));
         if Dates(1,10)==' '
             test_after_proc(i,4) = str2double(Dates(1,9));
@@ -86,7 +86,7 @@ for i=1:row-1
     %9:MISSION
     %10:SOUTHERN
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    switch PdDistrict 
+    switch PdDistrict
         case 'RICHMOND'
             test_after_proc(i,7)=1;
         case 'PARK'
@@ -105,18 +105,19 @@ for i=1:row-1
             test_after_proc(i,7)=8;
         case 'MISSION'
             test_after_proc(i,7)=9;
-        case 'SOUTHERN'           
+        case 'SOUTHERN'
             test_after_proc(i,7)=10;
     end;
     %%%%%统计经纬度%%%%%%%%%%%%%%
     test_after_proc(i,8)=X;
     test_after_proc(i,9)=Y;
-   
+    
 end;
 save testData 'test_after_proc';
 test_data=cell(13,1);
 for i =1:13
-    index=find(train_after_proc(:,2)==(1+2002));
-    test_data{i}=train_after_proc(index,[3:9,1]);
+    index=find(test_after_proc(:,2)==(i+2002));
+    test_data{i}=test_after_proc(index,[3:9,1]);
 end
 save test_data_by_year 'test_data';
+end
