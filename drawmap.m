@@ -7,26 +7,39 @@
 % end
 % 
 % MZ=max(Z0)
-
+load('train_Data');
 % clf
 % hold on;
-MX=max(X0);
-MZ=max(Z0);
+drawdata=train_after_proc(:,7:9);
+index=find(drawdata(:,1)>-50);
+drawdata=drawdata(index,:);
+index=find(drawdata(:,2)<85);
+drawdata=drawdata(index,:);
+X0=drawdata(:,1);
+Y0=drawdata(:,2);
+Z0=drawdata(:,3);
+
+% figure
+% hold on;
+% MX=max(X0);
+% MZ=max(Z0);
+
 % for z=MZ:-1:1
-%     figure
+% %     figure
 %     color=[z/MZ,0,1-z/MZ];
 %     plot(z,1,'.','MarkerSize',25, 'MarkerEdgeColor',color,'MarkerFaceColor',color,'EraseMode','xor');
 % end
 
-% N=39;
-% figure
-% hold on;
-% for z=N:-1:1
-%     color=[z/N,0,1-z/N];
-%     index=find(Z0(:)==z);
-%     plot(X0(index),Y0(index),'.','MarkerSize',2, 'MarkerEdgeColor',color,'MarkerFaceColor',color);
-% end
-% hold off;
+ N=39;
+ figure
+ hold on;
+ for z=N:-1:1
+     color=[z/N,0,1-z/N];
+     index=find(Z0(:)==z);
+     plot(X0(index),Y0(index),'.','MarkerSize',5, 'MarkerEdgeColor',color,'MarkerFaceColor',color);
+ end
+ hold off;
+ 
 %  
 % N=4;
 % figure
@@ -54,10 +67,10 @@ MZ=max(Z0);
 %     index=find(Z0(:)==MZ-z-7);
 %     plot(X0(index),Y0(index),'.','MarkerSize',5, 'MarkerEdgeColor',color,'MarkerFaceColor',color);
 % end
-N=39
-for z=N:-1:1
-%     color=[z/N,0,1-z/N];
-    index=find(Z0(:)==z);
-    HeatMap(X0(index),Y0(index))
-%     plot(X0(index),Y0(index),'.','MarkerSize',2, 'MarkerEdgeColor',color,'MarkerFaceColor',color);
-end
+% N=39
+% for z=N:-1:1
+% %     color=[z/N,0,1-z/N];
+%     index=find(Z0(:)==z);
+%     HeatMap(X0(index),Y0(index))
+% %     plot(X0(index),Y0(index),'.','MarkerSize',2, 'MarkerEdgeColor',color,'MarkerFaceColor',color);
+% end

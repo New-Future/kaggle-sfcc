@@ -109,8 +109,8 @@ for i=1:row-1
             test_after_proc(i,7)=10;
     end;
     %%%%%统计经纬度%%%%%%%%%%%%%%
-    test_after_proc(i,8)=X;
-    test_after_proc(i,9)=Y;
+    test_after_proc(i,8)=X*100;
+    test_after_proc(i,9)=Y*100;
     
 end;
 save testData 'test_after_proc';

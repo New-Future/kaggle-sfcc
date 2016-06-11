@@ -112,8 +112,8 @@ for i=1:row-1
             train_after_proc(i,6)=10;
     end;
     %%%%%统计经纬度%%%%%%%%%%%%%%%
-    train_after_proc(i,7)=X;
-    train_after_proc(i,8)=Y;
+    train_after_proc(i,7)=X*100;
+    train_after_proc(i,8)=Y*100;
     %%%%%%统计犯罪类别%%%%%%%%%%%%
     c=find(strcmp(CATEGORY,category));
     train_after_proc(i,9)=c;

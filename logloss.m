@@ -1,6 +1,6 @@
 function [ll]=logloss(predict_label,predicted ,standar)
 ll=0;
-m=length(predicted);
+m=length(standar);
 % for j=1:m %条目
 %     i=standar(j);
 %     ll=ll-log(predicted(j,i));
@@ -11,10 +11,10 @@ m=length(predicted);
 n=length(predict_label);
 for j=1:m %条目
     %     for i=1:n %条目
-    i=find(predict_label==standar(j));
+    i=find(predict_label==standar(j))
     p=predicted(j,i);
     if p>0
-        ll=ll-log(p);
+        ll=ll-log10(p);
     end
 end
 ll=ll/n;
